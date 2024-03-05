@@ -157,7 +157,8 @@ MonoBehaviour:
   avaliableSectors: []
   latestSector: {fileID: 1836817204}
   mainCamera: {fileID: 519420031}
-  m_scrollSpeed: 0.5
+  m_scrollSpeed: 0
+  player: {fileID: 1906371690}
 --- !u!4 &197798394
 Transform:
   m_ObjectHideFlags: 0
@@ -282,9 +283,17 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5449626658743162814, guid: 0bd951b92faf94d479ccc9e42ccac599, type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
     - target: {fileID: 7822712436666670390, guid: 0bd951b92faf94d479ccc9e42ccac599, type: 3}
       propertyPath: m_Name
       value: TileSector01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822712436666670390, guid: 0bd951b92faf94d479ccc9e42ccac599, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8296439429432678665, guid: 0bd951b92faf94d479ccc9e42ccac599, type: 3}
       propertyPath: m_LocalPosition.x
@@ -352,8 +361,8 @@ GameObject:
   - component: {fileID: 1906371690}
   - component: {fileID: 1906371689}
   - component: {fileID: 1906371688}
-  - component: {fileID: 1906371692}
   - component: {fileID: 1906371691}
+  - component: {fileID: 1906371692}
   m_Layer: 2
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -374,7 +383,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: d94182756a276a946b05d8afe2f50fc9, type: 2}
@@ -467,12 +476,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e599b091b044a484d9e3f167231640b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isGrounded: 0
   m_isSliding: 0
   m_speed: 5
   m_jumpForce: 10
---- !u!61 &1906371692
-BoxCollider2D:
+--- !u!58 &1906371692
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -504,18 +512,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

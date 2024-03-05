@@ -9,6 +9,10 @@ public class Map : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float m_scrollSpeed;
 
+    [SerializeField] private Transform player;
+
+    Vector2 m_midScreen;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -18,6 +22,16 @@ public class Map : MonoBehaviour
     private void Start()
     {
         CheckForEmptyList();
+
+        m_midScreen = mainCamera.WorldToScreenPoint(mainCamera.transform.position);
+    }
+
+    private void Update()
+    {
+        m_scrollSpeed = ScaleScrollSpeed();
+
+        //print(mainCamera.WorldToScreenPoint(mainCamera.transform.position));
+        //print($"Player Pos: {mainCamera.WorldToScreenPoint(player.position)}");
     }
 
     private void FixedUpdate()
@@ -46,6 +60,18 @@ public class Map : MonoBehaviour
                 avaliableSectors.Add(sector);
             }
         }
+    }
+
+    private float ScaleScrollSpeed()
+    {
+        Vector2 playerPosOnScreen = mainCamera.WorldToScreenPoint(player.position);
+
+        if (playerPosOnScreen.x > m_midScreen.x)
+        {
+            return 2f;
+        }
+
+        return 0.5f;
     }
 
     private int GetRandomSectorFromList()
