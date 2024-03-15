@@ -68,7 +68,7 @@ public class Map : MonoBehaviour
 
         if (playerPosOnScreen.x > m_midScreen.x)
         {
-            return 2f;
+            return 3f;
         }
 
         return 0.5f;
