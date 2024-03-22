@@ -1,10 +1,10 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D m_rb;
     private Animator m_animator;
+    private SpriteRenderer m_spriteRenderer;
 
     [SerializeField] private bool m_isSliding;
     [SerializeField] private int m_speed;
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
             if (IsGrounded())
             {
                 Jump();
+                m_animator.SetBool("IsJumping", true);
             }
 
             else if (m_canWallJump)
@@ -34,8 +36,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(transform.position, Vector2.right * 0.25f, Color.red);
-
+        SetVerticalAnimState();
         WallJumpCheck();
     }
 
@@ -46,16 +47,47 @@ public class Player : MonoBehaviour
             float h = Input.GetAxis("Horizontal");
 
             m_rb.velocity = new Vector2(h * m_speed, m_rb.velocity.y);
+            SetRunningAnimState(h);
+        }
+    }
 
-            if (m_rb.velocity.x > 0)
-            {
-                m_animator.SetBool("IsRunning", true);
-            }
+    private void SetRunningAnimState(float h)
+    {
+        if (h > 0)
+        {
+            m_animator.SetBool("IsRunning", true);
+            m_spriteRenderer.flipX = false;
+            return;
+        }
 
-            else
-            {
-                m_animator.SetBool("IsRunning", false);
-            }
+        if (h < 0)
+        {
+            m_animator.SetBool("IsRunning", true);
+            m_spriteRenderer.flipX = true;
+            return;
+        }
+
+        m_animator.SetBool("IsRunning", false);
+    }
+
+    private void SetVerticalAnimState()
+    {
+        switch (m_rb.velocity.y)
+        {
+            case > 0:
+                m_animator.SetBool("IsJumping", true);
+                m_animator.SetBool("IsFalling", false);
+                break;
+
+            case < 0f:
+                m_animator.SetBool("IsFalling", true);
+                m_animator.SetBool("IsJumping", false);
+                break;
+
+            default:
+                m_animator.SetBool("IsJumping", false);
+                m_animator.SetBool("IsFalling", false);
+                break;
         }
     }
 
@@ -117,12 +149,10 @@ public class Player : MonoBehaviour
 
         if (!hit)
         {
-            transform.parent = null;
             return false;
         }
 
         m_canWallJump = false;
-        transform.parent = hit.collider.transform;
         return true;
     }
 }
