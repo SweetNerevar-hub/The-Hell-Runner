@@ -2,18 +2,11 @@ using UnityEngine;
 
 public class BackgroundParallax : MonoBehaviour
 {
-    private SpriteRenderer m_background;
-
-    int foo = 0;
-
-    private void Start()
-    {
-        m_background = GetComponent<SpriteRenderer>();
-    }
+    [SerializeField] private Material m_backgroundMat;
+    [SerializeField] private float m_offsetSpeed;
 
     private void Update()
     {
-        foo++;
-        m_background.material.mainTextureOffset = new Vector2(foo, 0);
+        m_backgroundMat.mainTextureOffset += new Vector2(m_offsetSpeed * Time.deltaTime, 0);
     }
 }

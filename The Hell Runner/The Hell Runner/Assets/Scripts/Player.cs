@@ -127,30 +127,11 @@ public class Player : MonoBehaviour
         m_rb.velocity = pushDir;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Tile")
-        {
-            transform.parent = collision.transform;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Tile")
-        {
-            transform.parent = null;
-        }
-    }
-
     private bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f);
 
-        if (!hit)
-        {
-            return false;
-        }
+        if (!hit) return false;
 
         m_canWallJump = false;
         return true;
