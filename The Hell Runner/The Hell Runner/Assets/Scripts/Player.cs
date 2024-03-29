@@ -36,8 +36,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        SetVerticalAnimState();
         WallJumpCheck();
+        SetVerticalAnimState();
+        
     }
 
     private void FixedUpdate()
@@ -80,7 +81,11 @@ public class Player : MonoBehaviour
                 break;
 
             case < 0f:
-                m_animator.SetBool("IsFalling", true);
+                if (!m_animator.GetBool("IsWallSliding"))
+                {
+                    m_animator.SetBool("IsFalling", true);
+                }
+                
                 m_animator.SetBool("IsJumping", false);
                 break;
 
@@ -106,7 +111,7 @@ public class Player : MonoBehaviour
 
         else if (rightRay.collider.tag == "Tile")
         {
-            m_pushDir = new Vector2(-2f, 1f) * m_jumpForce;
+            m_pushDir = new Vector2(-4f, 1.25f) * m_jumpForce;
 
             if (!IsGrounded() && m_rb.velocity.y < 0)
             {
@@ -129,11 +134,10 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.15f);
 
         if (!hit) return false;
 
-        m_canWallJump = false;
         return true;
     }
 }
