@@ -32,5 +32,11 @@ public class PlayerCollisions : MonoBehaviour
             print("Hit Hazard");
             // kill player
         }
+
+        else if (collision.CompareTag("Soul"))
+        {
+            print("Increase Soul Count");
+            collision.GetComponent<Soul>().PlayCollectedAnim();
+        }
     }
 }
