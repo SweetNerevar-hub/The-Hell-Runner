@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ee598184edea1c4fa67909e3529ac44
+guid: 2d3230339c4098e45893de5649951778
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soul_collected_0
+      name: character_wallsliding (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77efc89a14a901b4a9fdfb3745137e48
-      internalID: -115316308
+      spriteID: 163b1d7cc50ba1f4e943123a7e14d107
+      internalID: 2006222944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soul_collected_1
+      name: character_wallsliding (1)_1
       rect:
         serializedVersion: 2
         x: 16
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b3db1c9c79363346948a3dcea5b5c93
-      internalID: -1915862435
+      spriteID: a2b20b205d325e244aeaa2d0cc2fb299
+      internalID: -633293393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soul_collected_2
+      name: character_wallsliding (1)_2
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90ef5a26d9c237a48b435cc03c9bcae2
-      internalID: 1239027187
+      spriteID: 0e76cefc8d8d35b4482e4a1013a9a900
+      internalID: 855640093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soul_collected_3
+      name: character_wallsliding (1)_3
       rect:
         serializedVersion: 2
         x: 16
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf737b4efbc727e4eb3d54f8feed675d
-      internalID: 1286480841
+      spriteID: bf54143d60d100a4ab4b113b2bb6188f
+      internalID: -436507807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soul_collected_4
+      name: character_wallsliding (1)_4
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9b3dd9d3f1238d418ddf17640767745
-      internalID: -116671453
+      spriteID: e2e1c8e00be7e1747bfbacb108d67ea1
+      internalID: -715196603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soul_collected_5
+      name: character_wallsliding (1)_5
       rect:
         serializedVersion: 2
         x: 16
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6c2bc222046bea4fbe367173e8dd669
-      internalID: 451331977
+      spriteID: d6428b309e70800438cb5a34bdea1bbb
+      internalID: -181013540
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      soul_collected_0: -115316308
-      soul_collected_1: -1915862435
-      soul_collected_2: 1239027187
-      soul_collected_3: 1286480841
-      soul_collected_4: -116671453
-      soul_collected_5: 451331977
+      character_wallsliding (1)_0: 2006222944
+      character_wallsliding (1)_1: -633293393
+      character_wallsliding (1)_2: 855640093
+      character_wallsliding (1)_3: -436507807
+      character_wallsliding (1)_4: -715196603
+      character_wallsliding (1)_5: -181013540
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

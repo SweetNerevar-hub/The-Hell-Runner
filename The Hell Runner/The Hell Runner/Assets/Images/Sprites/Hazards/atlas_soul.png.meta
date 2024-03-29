@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63c4b4ca0b60e2947ad2a97523cc91ed
+guid: cff3c72f125a2ba48b5cfc83009458ec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,49 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: souls_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d0949d6890aea144917a0cffe6b1ac8
-      internalID: 705263395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: souls_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 379cb8907c76c204aaa81dde46b756cb
-      internalID: 55455702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: souls_2
+      name: atlas_soul_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66d6590ffd4d40d498847e3f7d00035a
-      internalID: 1279460467
+      spriteID: 08c1657802caf0240ae8576c081df16a
+      internalID: -846551296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: souls_3
+      name: atlas_soul_1
       rect:
         serializedVersion: 2
         x: 16
@@ -187,14 +145,98 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dbb9b42ae037e942b5d6565d1d63014
-      internalID: 565516334
+      spriteID: 2270caa02316bf043aa9a9ec227281bb
+      internalID: 1767414125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: souls_4
+      name: atlas_soul_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c4862d475e1784bbc86a71231bdc4c
+      internalID: -1792700326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe8405f74f34f44d9033e372725f9a1
+      internalID: 1671944663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f538a45583adb4f88e27f9659a4118
+      internalID: 1619545542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e9b72437245c5409f6f760ecaeeac7
+      internalID: 341299720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_6
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d662fdc4a7a9cc04f9aabc437c90802e
-      internalID: 572095215
+      spriteID: 3066f3bee9d1d134e839c463aca92deb
+      internalID: 1057517221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: souls_5
+      name: atlas_soul_7
       rect:
         serializedVersion: 2
         x: 16
@@ -229,8 +271,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f62e7d8b5cf49824299571b7da631382
-      internalID: 1706036129
+      spriteID: 30d68b1b892641e4faf1b3c0c67d6e95
+      internalID: 702045440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd41ba3f71c8624caa6a84050de94d5
+      internalID: -300496033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb349d98fef6e14fa3fcd533d73c98d
+      internalID: 1945535335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 103c91b154f67cf47b4cdd5713266cb2
+      internalID: -242080350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_soul_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420d97c45956afe439ecb77bddc9daf8
+      internalID: -443400933
       vertices: []
       indices: 
       edges: []
@@ -246,12 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      souls_0: 705263395
-      souls_1: 55455702
-      souls_2: 1279460467
-      souls_3: 565516334
-      souls_4: 572095215
-      souls_5: 1706036129
+      atlas_soul_0: -846551296
+      atlas_soul_1: 1767414125
+      atlas_soul_10: -242080350
+      atlas_soul_11: -443400933
+      atlas_soul_2: -1792700326
+      atlas_soul_3: 1671944663
+      atlas_soul_4: 1619545542
+      atlas_soul_5: 341299720
+      atlas_soul_6: 1057517221
+      atlas_soul_7: 702045440
+      atlas_soul_8: -300496033
+      atlas_soul_9: 1945535335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

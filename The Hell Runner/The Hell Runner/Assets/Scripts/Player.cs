@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.15f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.25f);
 
         if (!hit) return false;
 
