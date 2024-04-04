@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer m_spriteRenderer;
 
     [SerializeField] private EventsManager m_events;
+    [SerializeField] private Camera m_camera;
 
     [SerializeField] private bool m_isSliding;
     [SerializeField] private int m_speed;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // TODO: Add coyote time to make jumping feel better
             if (IsGrounded())
             {
                 Jump();
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
         }
 
         WallJumpCheck();
+        PlayerInBoundsCheck();
         SetVerticalAnimState();
     }
 
@@ -105,6 +108,8 @@ public class Player : MonoBehaviour
 
     private void WallJumpCheck()
     {
+        // TODO: Add a second ray, one will point from the players neck, the other from their knees
+        // This is to make wall jumps feel more responsive by increasing the range in which the player can wall jump
         RaycastHit2D rightRay = Physics2D.Raycast(transform.position, Vector2.right, 0.35f);
 
         m_canWallJump = true;
@@ -113,7 +118,6 @@ public class Player : MonoBehaviour
         {
             m_canWallJump = false;
             m_animator.SetBool("IsWallSliding", false);
-            return;
         }
 
         else if (rightRay.collider.tag == "Tile")
@@ -124,8 +128,17 @@ public class Player : MonoBehaviour
             {
                 m_animator.SetBool("IsWallSliding", true);
             }
+        }
+    }
 
-            return;
+    private void PlayerInBoundsCheck()
+    {
+        Vector2 playerPosInCamera = m_camera.WorldToViewportPoint(transform.position);
+
+        if (playerPosInCamera.x < 0.025f)
+        {
+            m_animator.SetBool("IsDead", true);
+            m_events.Event_OnPlayerDeath();
         }
     }
 
@@ -146,11 +159,6 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    private void OnDisable()
-    {
-        m_events.onPlayerDeath -= DisablePlayerMovement;
-    }
-
     private bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.35f);
@@ -158,5 +166,10 @@ public class Player : MonoBehaviour
         if (!hit) return false;
 
         return true;
+    }
+
+    private void OnDisable()
+    {
+        m_events.onPlayerDeath -= DisablePlayerMovement;
     }
 }
