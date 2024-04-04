@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    [SerializeField] private EventsManager m_events;
     [SerializeField] private GameObject[] sectors;
     [SerializeField] private List<GameObject> avaliableSectors;
     [SerializeField] private GameObject latestSector;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float m_scrollSpeed;
+
+    private const float m_maxScrollSpeed = 6;
+    private float m_trueScrollSpeed;
 
     [SerializeField] private Transform player;
 
@@ -21,17 +25,17 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
+        m_events.onPlayerDeath += StopScrolling;
+
         CheckForEmptyList();
 
         m_midScreen = mainCamera.WorldToScreenPoint(mainCamera.transform.position);
+        m_trueScrollSpeed = m_scrollSpeed;
     }
 
     private void Update()
     {
         m_scrollSpeed = ScaleScrollSpeed();
-
-        //print(mainCamera.WorldToScreenPoint(mainCamera.transform.position));
-        //print($"Player Pos: {mainCamera.WorldToScreenPoint(player.position)}");
     }
 
     private void FixedUpdate()
@@ -46,6 +50,11 @@ public class Map : MonoBehaviour
 
         latestSector = Instantiate(avaliableSectors[sector], transform);
         latestSector.transform.position = lastSector.GetComponent<Sector>().end.position;
+
+        if (m_trueScrollSpeed < m_maxScrollSpeed)
+        {
+            m_trueScrollSpeed += 0.2f;
+        }
 
         avaliableSectors.RemoveAt(sector);
         CheckForEmptyList();
@@ -62,16 +71,32 @@ public class Map : MonoBehaviour
         }
     }
 
+    private void StopScrolling()
+    {
+        enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        m_events.onPlayerDeath -= StopScrolling;
+    }
+
     private float ScaleScrollSpeed()
     {
         Vector2 playerPosOnScreen = mainCamera.WorldToScreenPoint(player.position);
+        float speedScaleMultiplier = 0.05f;
 
-        if (playerPosOnScreen.x > m_midScreen.x)
+        if (playerPosOnScreen.x > m_midScreen.x && m_scrollSpeed < 4)
         {
-            return 3f;
+            return m_scrollSpeed += speedScaleMultiplier;
         }
 
-        return 0.5f;
+        else if (m_scrollSpeed > m_trueScrollSpeed)
+        {
+            return m_scrollSpeed -= speedScaleMultiplier;
+        }
+
+        return m_trueScrollSpeed;
     }
 
     private int GetRandomSectorFromList()

@@ -6,8 +6,11 @@ public class Player : MonoBehaviour
     private Animator m_animator;
     private SpriteRenderer m_spriteRenderer;
 
+    [SerializeField] private EventsManager m_events;
+
     [SerializeField] private bool m_isSliding;
     [SerializeField] private int m_speed;
+    [SerializeField] private float m_acceleration;
     [SerializeField] private int m_jumpForce;
 
     private bool m_canWallJump;
@@ -18,6 +21,11 @@ public class Player : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        m_events.onPlayerDeath += DisablePlayerMovement;
     }
 
     private void Update()
@@ -38,7 +46,6 @@ public class Player : MonoBehaviour
 
         WallJumpCheck();
         SetVerticalAnimState();
-        
     }
 
     private void FixedUpdate()
@@ -98,7 +105,7 @@ public class Player : MonoBehaviour
 
     private void WallJumpCheck()
     {
-        RaycastHit2D rightRay = Physics2D.Raycast(transform.position, Vector2.right, 0.25f);
+        RaycastHit2D rightRay = Physics2D.Raycast(transform.position, Vector2.right, 0.35f);
 
         m_canWallJump = true;
 
@@ -111,7 +118,7 @@ public class Player : MonoBehaviour
 
         else if (rightRay.collider.tag == "Tile")
         {
-            m_pushDir = new Vector2(-4f, 1.25f) * m_jumpForce;
+            m_pushDir = new Vector2(-3, 1.35f) * m_jumpForce;
 
             if (!IsGrounded() && m_rb.velocity.y < 0)
             {
@@ -132,9 +139,21 @@ public class Player : MonoBehaviour
         m_rb.velocity = pushDir;
     }
 
+    private void DisablePlayerMovement()
+    {
+        m_rb.gravityScale = 0;
+        m_rb.velocity = Vector2.zero;
+        enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        m_events.onPlayerDeath -= DisablePlayerMovement;
+    }
+
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.25f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.35f);
 
         if (!hit) return false;
 
