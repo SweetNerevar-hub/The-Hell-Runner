@@ -21,6 +21,10 @@ public class PlatformFall : MonoBehaviour
         }
     }
 
+    // TODO:    Make a bool that is set to true when the player hits the playerform
+    //          this will hopefully stop the jittering since the platforms only moves when the player it colliding with it,
+    //          and the player stops colliding when the platform moves down a little and before the player falls back into it
+    //          thus, jitter.
     private void Descend()
     {
         if (m_currentSpeed < m_maxSpeed)
@@ -28,7 +32,7 @@ public class PlatformFall : MonoBehaviour
             m_currentSpeed += m_acceleration * Time.deltaTime;
         }
 
-        m_truePosition -= m_currentSpeed * Time.deltaTime;
+        m_truePosition -= m_currentSpeed;
         transform.position = new Vector2(transform.position.x, m_truePosition);
     }
 }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer m_spriteRenderer;
 
     [SerializeField] private EventsManager m_events;
+    [SerializeField] private SceneHandler m_sceneHandler;
     [SerializeField] private Camera m_camera;
 
     [SerializeField] private bool m_isSliding;
@@ -31,6 +32,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_sceneHandler.ChangeScene(0);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // TODO: Add coyote time to make jumping feel better
@@ -108,8 +114,8 @@ public class Player : MonoBehaviour
 
     private void WallJumpCheck()
     {
-        // TODO: Add a second ray, one will point from the players neck, the other from their knees
-        // This is to make wall jumps feel more responsive by increasing the range in which the player can wall jump
+        // TODO:    Add a second ray, one will point from the players neck, the other from their knees
+        //          This is to make wall jumps feel more responsive by increasing the range in which the player can wall jump
         RaycastHit2D rightRay = Physics2D.Raycast(transform.position, Vector2.right, 0.35f);
 
         m_canWallJump = true;
