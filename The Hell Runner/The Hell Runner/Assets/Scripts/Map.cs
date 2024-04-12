@@ -4,6 +4,8 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [SerializeField] private EventsManager m_events;
+    [SerializeField] private GameManager m_gameManager;
+
     [SerializeField] private GameObject[] sectors;
     [SerializeField] private List<GameObject> avaliableSectors;
     [SerializeField] private GameObject latestSector;
@@ -58,6 +60,7 @@ public class Map : MonoBehaviour
 
         avaliableSectors.RemoveAt(sector);
         CheckForEmptyList();
+        m_gameManager.IncreaseTotalSectorsLoaded();
     }
 
     private void CheckForEmptyList()

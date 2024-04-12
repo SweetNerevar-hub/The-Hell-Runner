@@ -32,11 +32,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            m_sceneHandler.ChangeScene(0);
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // TODO: Add coyote time to make jumping feel better

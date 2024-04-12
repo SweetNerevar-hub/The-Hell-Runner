@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d3230339c4098e45893de5649951778
+guid: 53263d92e3ed99f4b8d4975a1f3b059a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,49 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_wallsliding (1)_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 163b1d7cc50ba1f4e943123a7e14d107
-      internalID: 2006222944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_wallsliding (1)_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2b20b205d325e244aeaa2d0cc2fb299
-      internalID: -633293393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_wallsliding (1)_2
+      name: bat_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,35 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e76cefc8d8d35b4482e4a1013a9a900
-      internalID: 855640093
+      spriteID: 12354cc4e363ccd4fba0499463ee5e48
+      internalID: 371979038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_wallsliding (1)_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf54143d60d100a4ab4b113b2bb6188f
-      internalID: -436507807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_wallsliding (1)_4
+      name: bat_1
       rect:
         serializedVersion: 2
         x: 0
@@ -208,29 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2e1c8e00be7e1747bfbacb108d67ea1
-      internalID: -715196603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_wallsliding (1)_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6428b309e70800438cb5a34bdea1bbb
-      internalID: -181013540
+      spriteID: 787fb8c3362228446b6f67513dd75f8d
+      internalID: 1966903621
       vertices: []
       indices: 
       edges: []
@@ -246,12 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      character_wallsliding (1)_0: 2006222944
-      character_wallsliding (1)_1: -633293393
-      character_wallsliding (1)_2: 855640093
-      character_wallsliding (1)_3: -436507807
-      character_wallsliding (1)_4: -715196603
-      character_wallsliding (1)_5: -181013540
+      bat_0: 371979038
+      bat_1: 1966903621
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
