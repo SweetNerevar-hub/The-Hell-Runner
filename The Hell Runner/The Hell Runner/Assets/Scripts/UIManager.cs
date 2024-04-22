@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private EventsManager m_events;
+    [SerializeField] private LeaderboardManager m_leaderboardManager;
     [SerializeField] private Text m_score;
     [SerializeField] private Image m_pauseScreen;
 
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject m_deathScreen;
     [SerializeField] private Text m_totalScore;
     [SerializeField] private Text m_totalScoreCalc;
+    [SerializeField] private InputField m_playerNameField;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class UIManager : MonoBehaviour
         m_deathScreen.SetActive(true);
         m_score.enabled = false;
         m_pauseScreen.enabled = true;
+        m_playerNameField.ActivateInputField();
     }
 
     public void ToggleGamePause(bool isPaused)
@@ -42,6 +45,24 @@ public class UIManager : MonoBehaviour
         }
 
         Time.timeScale = 1;
+    }
+
+    public void CheckForValidName()
+    {
+        if (m_playerNameField.text == "")
+        {
+            print("No name has been given");
+            return;
+        }
+
+        m_leaderboardManager.AddNewScore(m_playerNameField.text.ToUpper(), int.Parse(m_totalScore.text));
+        ClearInputField();
+    }
+
+    private void ClearInputField()
+    {
+        m_playerNameField.enabled = false;
+        m_playerNameField.gameObject.SetActive(false);
     }
 
     private void OnDisable()
