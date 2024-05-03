@@ -1252,9 +1252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956116728454d3543a8e272022510558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_acceleration: 1
+  m_acceleration: 0.02
   m_currentSpeed: 0
-  m_maxSpeed: 4
+  m_maxSpeed: 1
 --- !u!4 &9214287494479086577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8520704299824402804, guid: 6f6d84cbe3b0f404bbf89225ca7cbc9e, type: 3}
@@ -1466,9 +1466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956116728454d3543a8e272022510558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_acceleration: 1
+  m_acceleration: 0.02
   m_currentSpeed: 0
-  m_maxSpeed: 4
+  m_maxSpeed: 1
 --- !u!1001 &3653429081602533365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1799,9 +1799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956116728454d3543a8e272022510558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_acceleration: 1
+  m_acceleration: 0.02
   m_currentSpeed: 0
-  m_maxSpeed: 4
+  m_maxSpeed: 1
 --- !u!1001 &4606680431354718810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2003,9 +2003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956116728454d3543a8e272022510558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_acceleration: 1
+  m_acceleration: 0.02
   m_currentSpeed: 0
-  m_maxSpeed: 4
+  m_maxSpeed: 1
 --- !u!4 &3746682079771960366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8520704299824402804, guid: 6f6d84cbe3b0f404bbf89225ca7cbc9e, type: 3}

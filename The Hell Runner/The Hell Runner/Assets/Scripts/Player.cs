@@ -17,8 +17,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_acceleration;
     [SerializeField] private int m_jumpForce;
 
+    [SerializeField] private float m_maxCoyoteTime;
+    [SerializeField] private float m_currentCoyoteTime;
+
     private bool m_canWallJump;
     private Vector2 m_pushDir;
+    private const float m_rayLengthDown = 0.75f;
 
     private void Awake()
     {
@@ -39,8 +43,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // TODO: Add coyote time to make jumping feel better
-            if (IsGrounded())
+            if (IsGrounded() || m_currentCoyoteTime > 0f)
             {
                 Jump();
                 m_animator.SetBool("IsJumping", true);
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        CoyoteTimeRay();
         WallJumpCheck();
         PlayerInBoundsCheck();
         SetVerticalAnimState();
@@ -114,20 +118,24 @@ public class Player : MonoBehaviour
 
     private void WallJumpCheck()
     {
-        // TODO:    Add a second ray, one will point from the players neck, the other from their knees
-        //          This is to make wall jumps feel more responsive by increasing the range in which the player can wall jump
-        RaycastHit2D rightRay = Physics2D.Raycast(transform.position, Vector2.right, 0.35f);
+        Vector2 topRayPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        Vector2 bottomRayPos = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        float rayLength = 0.35f;
+
+        RaycastHit2D topRay = Physics2D.Raycast(topRayPos, Vector2.right, rayLength);
+        RaycastHit2D bottomRay = Physics2D.Raycast(bottomRayPos, Vector2.right, rayLength);
 
         m_canWallJump = true;
 
-        if (!rightRay || IsGrounded())
+        if (!topRay && !bottomRay || IsGrounded())
         {
             m_canWallJump = false;
             m_animator.SetBool("IsWallSliding", false);
         }
 
-        else if (rightRay.collider.tag == "Tile")
+        else if (topRay.collider.tag == "Tile" || bottomRay.collider.tag == "Tile")
         {
+            //m_currentCoyoteTime = m_maxCoyoteTime;
             m_pushDir = new Vector2(-3, 1.35f) * m_jumpForce;
 
             if (!IsGrounded() && m_rb.velocity.y < 0)
@@ -168,9 +176,27 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
+    private void CoyoteTimeRay()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_rayLengthDown);
+
+        if (!hit && m_currentCoyoteTime > 0f)
+        {
+            m_currentCoyoteTime -= Time.deltaTime;
+        }
+        
+        else if (hit)
+        {
+            if (hit.collider.tag == "Tile")
+            {
+                m_currentCoyoteTime = m_maxCoyoteTime;
+            }
+        }
+    }
+
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.35f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, m_rayLengthDown);
 
         if (!hit)
             return false;
