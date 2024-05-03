@@ -2,27 +2,30 @@ using UnityEngine;
 
 public class MenuUI : MonoBehaviour
 {
-    private enum MENU_STATE { TITLE, LEADERBOARD }
-
     [SerializeField] private LeaderboardManager m_leaderboardManager;
     [SerializeField] private GameObject m_titleScreen;
     [SerializeField] private GameObject m_leaderboardScreen;
-    
-    private MENU_STATE m_menuState;
+    [SerializeField] private GameObject m_shopScreen;
 
-    public void ToggleMenuStates()
+    public void OpenTitleScreen()
     {
-        if (m_menuState == MENU_STATE.TITLE)
-        {
-            m_menuState = MENU_STATE.LEADERBOARD;
-            m_titleScreen.SetActive(false);
-            m_leaderboardScreen.SetActive(true);
-            m_leaderboardManager.DisplayLeaderboard();
-            return;
-        }
-
-        m_menuState = MENU_STATE.TITLE;
         m_titleScreen.SetActive(true);
         m_leaderboardScreen.SetActive(false);
+        m_shopScreen.SetActive(false);
+    }
+
+    public void OpenLeaderboardScreen()
+    {
+        m_titleScreen.SetActive(false);
+        m_shopScreen.SetActive(false);
+        m_leaderboardScreen.SetActive(true);
+        m_leaderboardManager.DisplayLeaderboard();
+    }
+
+    public void OpenShopScreen()
+    {
+        m_titleScreen.SetActive(false);
+        m_leaderboardScreen.SetActive(false);
+        m_shopScreen.SetActive(true);
     }
 }

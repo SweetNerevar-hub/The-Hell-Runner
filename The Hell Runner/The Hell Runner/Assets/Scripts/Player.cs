@@ -5,10 +5,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D m_rb;
     private Animator m_animator;
     private SpriteRenderer m_spriteRenderer;
+    private PlayerSounds m_sounds;
 
     [SerializeField] private EventsManager m_events;
     [SerializeField] private SceneHandler m_sceneHandler;
     [SerializeField] private Camera m_camera;
+    [SerializeField] private Hat hat;
 
     [SerializeField] private bool m_isSliding;
     [SerializeField] private int m_speed;
@@ -23,11 +25,14 @@ public class Player : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_sounds = GetComponent<PlayerSounds>();
     }
 
     private void Start()
     {
-        m_events.onPlayerDeath += DisablePlayerMovement;
+        m_events.onPlayerDeath += OnDeath;
+
+        hat.SetCosmetic();
     }
 
     private void Update()
@@ -146,15 +151,18 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         m_rb.velocity = new Vector2(m_rb.velocity.x, m_jumpForce);
+        m_sounds.PlayJumpSound();
     }
 
     private void WallJump(Vector2 pushDir)
     {
         m_rb.velocity = pushDir;
+        m_sounds.PlayJumpSound();
     }
 
-    private void DisablePlayerMovement()
+    private void OnDeath()
     {
+        m_sounds.PlayDeathSound();
         m_rb.gravityScale = 0;
         m_rb.velocity = Vector2.zero;
         enabled = false;
@@ -164,13 +172,14 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.35f);
 
-        if (!hit) return false;
+        if (!hit)
+            return false;
 
         return true;
     }
 
     private void OnDisable()
     {
-        m_events.onPlayerDeath -= DisablePlayerMovement;
+        m_events.onPlayerDeath -= OnDeath;
     }
 }

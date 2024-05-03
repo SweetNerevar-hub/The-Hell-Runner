@@ -1299,7 +1299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 160438724840930244, guid: ee7be85db644e4c46b0fc262a7f8cca8, type: 3}
       propertyPath: m_Name
-      value: Spikes (2)
+      value: Spikes
       objectReference: {fileID: 0}
     - target: {fileID: 3182515420085365956, guid: ee7be85db644e4c46b0fc262a7f8cca8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1401,7 +1401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562630007001828059, guid: ca6c772225f014f41914b701bd712577, type: 3}
       propertyPath: m_Name
-      value: Lava (1)
+      value: Lava
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

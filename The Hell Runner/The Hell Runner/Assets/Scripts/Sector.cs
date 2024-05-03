@@ -8,6 +8,8 @@ public class Sector : MonoBehaviour
     private BoxCollider2D sectorEnd;
 
     [SerializeField] private bool hasBeenInBounds;
+    [SerializeField] private Transform m_soulSpawn;
+    [SerializeField] private GameObject m_soul;
 
     public Transform end;
 
@@ -21,6 +23,11 @@ public class Sector : MonoBehaviour
     {
         mainCamera = Camera.main;
         cameraPlanes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
+
+        if (m_soulSpawn)
+        {
+            CalculateSoulSpawn();
+        }
     }
 
     private void FixedUpdate()
@@ -36,6 +43,16 @@ public class Sector : MonoBehaviour
         else if (!GeometryUtility.TestPlanesAABB(cameraPlanes, bounds) && hasBeenInBounds)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void CalculateSoulSpawn()
+    {
+        int r = Random.Range(0, 10);
+
+        if (r > -1)
+        {
+            Instantiate(m_soul, m_soulSpawn.position, Quaternion.identity, map.transform);
         }
     }
 }

@@ -5,7 +5,9 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private EventsManager m_events;
     [SerializeField] private LeaderboardManager m_leaderboardManager;
+    [SerializeField] private GameManager m_gameManager;
     [SerializeField] private Text m_score;
+    [SerializeField] private Text m_soulCount;
     [SerializeField] private Image m_pauseScreen;
 
     [Header("Death Screen UI")]
@@ -17,6 +19,9 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         m_events.onPlayerDeath += DisplayDeathScreen;
+        m_events.onCollectSoul += UpdateSoulCount;
+
+        UpdateSoulCount();
     }
 
     public void UpdateScore(int score, int sectorsLoaded)
@@ -26,7 +31,12 @@ public class UIManager : MonoBehaviour
         m_totalScoreCalc.text = $"({score} x {sectorsLoaded})";
     }
 
-    public void DisplayDeathScreen()
+    private void UpdateSoulCount()
+    {
+        m_soulCount.text = $"{GameManager.m_totalSouls}x";
+    }
+
+    private void DisplayDeathScreen()
     {
         m_deathScreen.SetActive(true);
         m_score.enabled = false;
@@ -41,9 +51,11 @@ public class UIManager : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0;
+            m_gameManager.ToggleCursorHide(false);
             return;
         }
 
+        m_gameManager.ToggleCursorHide(true);
         Time.timeScale = 1;
     }
 
@@ -68,5 +80,6 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         m_events.onPlayerDeath -= DisplayDeathScreen;
+        m_events.onCollectSoul -= UpdateSoulCount;
     }
 }

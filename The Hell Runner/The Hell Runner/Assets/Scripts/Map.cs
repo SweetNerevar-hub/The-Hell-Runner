@@ -89,7 +89,7 @@ public class Map : MonoBehaviour
         Vector2 playerPosOnScreen = mainCamera.WorldToScreenPoint(player.position);
         float speedScaleMultiplier = 0.05f;
 
-        if (playerPosOnScreen.x > m_midScreen.x && m_scrollSpeed < 4)
+        if (playerPosOnScreen.x > m_midScreen.x && m_scrollSpeed < 6)
         {
             return m_scrollSpeed += speedScaleMultiplier;
         }

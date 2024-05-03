@@ -30,6 +30,7 @@ public class PlayerCollisions : MonoBehaviour
         else if (collision.CompareTag("Soul"))
         {
             collision.GetComponent<Soul>().PlayCollectedAnim();
+            m_events.Event_OnCollectSoul();
         }
     }
 

@@ -4,7 +4,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private EventsManager m_events;
     [SerializeField] private UIManager m_uiManager;
-    [SerializeField] private GameObject bat;
+
+    [SerializeField] private AudioClip m_collectSoulSound;
 
     private bool m_isPaused;
     private bool m_isPlayerDead;
@@ -12,9 +13,14 @@ public class GameManager : MonoBehaviour
     private int m_totalSectorsLoaded;
     private int m_totalScore;
 
+    static public int m_totalSouls = 0;
+
     private void Start()
     {
         m_events.onPlayerDeath += OnPlayerDeath;
+        m_events.onCollectSoul += OnCollectSoul;
+
+        ToggleCursorHide(true);
     }
 
     private void Update()
@@ -36,6 +42,14 @@ public class GameManager : MonoBehaviour
     {
         m_isPlayerDead = true;
         m_totalScore = m_currentScore * m_totalSectorsLoaded;
+
+        ToggleCursorHide(false);
+    }
+
+    private void OnCollectSoul()
+    {
+        m_totalSouls++;
+        SoundManager.Instance.PlaySound(m_collectSoulSound);
     }
 
     public void IncreaseTotalSectorsLoaded()
@@ -43,8 +57,22 @@ public class GameManager : MonoBehaviour
         m_totalSectorsLoaded++;
     }
 
+    public void ToggleCursorHide(bool doLock)
+    {
+        if (doLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            return;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private void OnDisable()
     {
         m_events.onPlayerDeath -= OnPlayerDeath;
+        m_events.onCollectSoul -= OnCollectSoul;
     }
 }

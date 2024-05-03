@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
     private AudioSource m_audio;
 
@@ -12,12 +12,13 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         m_events.onPlayerDeath += OnPlayerDeath;
+
         m_audio = GetComponent<AudioSource>();
         m_audio.volume = 0;
-        StartCoroutine(FadeInAudio());
+        StartCoroutine(FadeInMusic());
     }
 
-    private IEnumerator FadeInAudio()
+    private IEnumerator FadeInMusic()
     {
         while (m_audio.volume < m_maxVolume)
         {
@@ -28,8 +29,11 @@ public class AudioManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        m_audio.Stop();
-        m_audio.PlayOneShot(m_playerDeathClip);
+        if (m_audio.enabled)
+        {
+            m_audio.Stop();
+            m_audio.PlayOneShot(m_playerDeathClip);
+        }
     }
 
     private void OnDisable()
